@@ -87,6 +87,7 @@ const Login = (props) => {
 							</div>
 						)}
 						Not yet a member?
+						<Link to="/signup">Signup</Link>
 					</div>
 				</div>
 			</div>
