@@ -104,7 +104,9 @@ const Signup = (props) => {
 							</div>
 						)}
 						Already a member?
-						<Link to="/login">Login</Link>
+						<Link className="m-1" to="/login">
+							Login
+						</Link>
 					</div>
 				</div>
 			</div>
