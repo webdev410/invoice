@@ -8,19 +8,21 @@ export default function Navbar() {
 	};
 	return (
 		<nav>
-			{Auth.loggedIn() ? (
-				<div className="d-flex justify-content-between m-2">
-					{/* Navbar when logged in */}
-					<Link to="/">Home</Link>
-					<Link onClick={logout}>Logout</Link>
-				</div>
-			) : (
-				<div className="d-flex justify-content-between m-2">
-					{/* Navbar when not logged in */}
-					<Link to="/login">Login</Link>
-					<Link to="/signup">Signup</Link>
-				</div>
-			)}
+			<div className="d-flex justify-content-between m-2">
+				<Link to="/">Invoice System</Link>
+				{Auth.loggedIn() ? (
+					<>
+						{/* Navbar when logged in */}
+						<Link onClick={logout}>Logout</Link>
+					</>
+				) : (
+					<>
+						{/* Navbar when not logged in */}
+						<Link to="/login">Login</Link>
+						<Link to="/signup">Signup</Link>
+					</>
+				)}
+			</div>
 		</nav>
 	);
 }
