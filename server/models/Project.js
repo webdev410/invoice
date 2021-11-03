@@ -16,26 +16,19 @@ const projectSchema = new Schema({
 		required: true,
 		default: false,
 	},
-	payBy: {
+	dueDate: {
 		type: Date,
-		default: Date.now() + 30,
+		default: Date.now,
 		get: (timestamp) => dateFormat(timestamp),
+	},
+	company: {
+		type: Schema.Types.ObjectId,
+		ref: "Company",
 	},
 	notes: [
 		{
-			body: {
-				type: String,
-				required: true,
-			},
-			author: {
-				type: Schema.Types.ObjectId,
-				ref: "User",
-			},
-			createdAt: {
-				type: Date,
-				default: Date.now,
-				get: (timestamp) => dateFormat(timestamp),
-			},
+			type: Schema.Types.ObjectId,
+			ref: "Note",
 		},
 	],
 	createdAt: {

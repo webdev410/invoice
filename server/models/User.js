@@ -25,6 +25,12 @@ const userSchema = new Schema({
 		required: true,
 		minlength: 5,
 	},
+	companies: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "Company",
+		},
+	],
 	createdAt: {
 		type: Date,
 		default: Date.now,

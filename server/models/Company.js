@@ -11,6 +11,24 @@ const companySchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: "User",
 	},
+	contacts: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "Contact",
+		},
+	],
+	projects: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "Project",
+		},
+	],
+	notes: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "Note",
+		},
+	],
 	createdAt: {
 		type: Date,
 		default: Date.now,
