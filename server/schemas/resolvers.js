@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Company } = require("../models");
+const { User, Company, Contact } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -10,14 +10,19 @@ const resolvers = {
 		user: async (parent, { username }) => {
 			return User.findOne({ username }).populate("companies");
 		},
-
 		me: async (parent, args, context) => {
 			if (context.user) {
-				return User.findOne({ _id: context.user._id }).populate(
-					"companies"
-				);
+				return User.findOne({ _id: context.user._id })
+					.populate("companies")
+					.populate({
+						path: "companies",
+						populate: "contacts",
+					});
 			}
 			throw new AuthenticationError("You need to be logged in!");
+		},
+		company: async (parent, { companyId }) => {
+			return await Company.findById(companyId);
 		},
 	},
 
@@ -59,6 +64,45 @@ const resolvers = {
 				);
 
 				return company;
+			}
+			throw new AuthenticationError("You need to be logged in!");
+		},
+		addContact: async (
+			parent,
+			{
+				companyId,
+				name,
+				phone,
+				email,
+				address1,
+				address2,
+				city,
+				state,
+				zip,
+			},
+			context
+		) => {
+			if (context.user) {
+				const contact = await Contact.create({
+					company: companyId,
+					name,
+					phone,
+					email,
+					address1,
+					address2,
+					city,
+					state,
+					zip,
+					company,
+					user: context.user._id,
+				});
+
+				await Company.findOneAndUpdate(
+					{ _id: companyId },
+					{ $addToSet: { contacts: contact._id } }
+				);
+
+				return contact;
 			}
 			throw new AuthenticationError("You need to be logged in!");
 		},

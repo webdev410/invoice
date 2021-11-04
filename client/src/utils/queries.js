@@ -10,6 +10,14 @@ export const QUERY_USER = gql`
 		}
 	}
 `;
+export const QUERY_SINGLE_COMPANY = gql`
+	query company($companyId: ID!) {
+		company(companyId: $companyId) {
+			_id
+			name
+		}
+	}
+`;
 
 export const QUERY_ME = gql`
 	query me {
@@ -21,6 +29,12 @@ export const QUERY_ME = gql`
 			companies {
 				_id
 				name
+				contacts {
+					_id
+					name
+					email
+					phone
+				}
 			}
 		}
 	}

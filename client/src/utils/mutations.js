@@ -45,3 +45,40 @@ export const ADD_COMPANY = gql`
 		}
 	}
 `;
+export const ADD_CONTACT = gql`
+	mutation addContact(
+		$companyId: ID
+		$name: String
+		$phone: String
+		$email: String
+		$address1: String
+		$address2: String
+		$city: String
+		$state: String
+		$zip: String
+	) {
+		addContact(
+			companyId: $companyId
+			name: $name
+			phone: $phone
+			email: $email
+			address1: $address1
+			address2: $address2
+			city: $city
+			state: $state
+			zip: $zip
+		) {
+			company {
+				_id
+			}
+			name
+			phone
+			email
+			address1
+			address2
+			city
+			state
+			zip
+		}
+	}
+`;

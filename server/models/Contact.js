@@ -39,7 +39,7 @@ const contactSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: "Company",
 	},
-	createdBy: {
+	user: {
 		type: Schema.Types.ObjectId,
 		ref: "User",
 	},

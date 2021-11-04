@@ -1,7 +1,7 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 export default function MyCompanies({ user }) {
-	console.log(user);
+	console.log(user.companies);
 	return (
 		<div>
 			{user.companies.length === 0 ? (
@@ -11,9 +11,25 @@ export default function MyCompanies({ user }) {
 				</h5>
 			) : (
 				<>
-					{user.companies.map((company) => (
-						<div>{company.name}</div>
-					))}
+					<table>
+						<tr>
+							<th>Company Name</th>
+							<th>Contact Name</th>
+						</tr>
+						{user.companies.map((company) => (
+							<tr>
+								<td key={company._id}>
+									{" "}
+									<Link to={`/company/${company._id}`}>
+										{company.name}
+									</Link>
+								</td>
+								{company.contacts.map((contact) => (
+									<td>{contact.name}</td>
+								))}
+							</tr>
+						))}
+					</table>
 				</>
 			)}
 		</div>

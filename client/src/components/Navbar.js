@@ -15,6 +15,7 @@ export default function Navbar() {
 						{/* Navbar when logged in */}
 						<Link to="/dashboard">Dashboard</Link>
 						<Link to="/add-company">Add Company</Link>
+						<Link to="/add-contact">Add Contact</Link>
 						<Link onClick={logout}>Logout</Link>
 					</>
 				) : (

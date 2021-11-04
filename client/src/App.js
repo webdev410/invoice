@@ -15,7 +15,8 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import AddCompany from "./pages/AddCompany";
 import Dashboard from "./components/Dashboard";
-
+import AddContact from "./pages/AddContact";
+import SingleCompany from "./components/SingleCompany";
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
 	uri: "/graphql",
@@ -59,6 +60,12 @@ function App() {
 					</Route>
 					<Route exact path="/add-company">
 						<AddCompany title="Add Company" />
+					</Route>
+					<Route exact path="/add-contact">
+						<AddContact title="Add Contact" />
+					</Route>
+					<Route exact path="/company/:companyId">
+						<SingleCompany title="Company" />
 					</Route>
 				</div>
 			</Router>
