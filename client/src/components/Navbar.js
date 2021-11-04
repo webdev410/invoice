@@ -13,6 +13,7 @@ export default function Navbar() {
 				{Auth.loggedIn() ? (
 					<>
 						{/* Navbar when logged in */}
+						<Link to="/dashboard">Dashboard</Link>
 						<Link to="/add-company">Add Company</Link>
 						<Link onClick={logout}>Logout</Link>
 					</>

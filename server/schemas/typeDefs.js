@@ -16,7 +16,7 @@ const typeDefs = gql`
 	}
 	type Company {
 		_id: ID!
-		name: String!
+		name: String
 		user: User
 		notes: [Note]
 		contacts: [Contact]

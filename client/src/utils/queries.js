@@ -18,6 +18,10 @@ export const QUERY_ME = gql`
 			name
 			username
 			email
+			companies {
+				_id
+				name
+			}
 		}
 	}
 `;
