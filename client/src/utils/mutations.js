@@ -34,3 +34,14 @@ export const ADD_USER = gql`
 		}
 	}
 `;
+
+export const ADD_COMPANY = gql`
+	mutation addCompany($name: String!) {
+		addCompany(name: $name) {
+			_id
+			user {
+				_id
+			}
+		}
+	}
+`;

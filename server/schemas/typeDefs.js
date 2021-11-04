@@ -45,6 +45,15 @@ const typeDefs = gql`
 		notes: [Note]
 		createdAt: String
 	}
+	type Item {
+		_id: ID!
+		description: String
+		units: Int
+		unitPrice: Int
+		invoice: Invoice
+		notes: [Note]
+		createdAt: String
+	}
 	type Note {
 		_id: ID!
 		body: String
@@ -82,6 +91,7 @@ const typeDefs = gql`
 			email: String!
 			password: String!
 		): Auth
+		addCompany(name: String!): Company
 		login(email: String!, password: String!): Auth
 	}
 `;

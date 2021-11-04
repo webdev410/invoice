@@ -8,14 +8,14 @@ const itemSchema = new Schema({
 		trim: true,
 	},
 	units: {
-		type: Boolean,
+		type: Number,
 		required: true,
-		default: false,
+		default: 0,
 	},
 	unitPrice: {
-		type: Boolean,
+		type: Number,
 		required: true,
-		default: false,
+		min: 0.99,
 	},
 	invoice: {
 		type: Schema.Types.ObjectId,
